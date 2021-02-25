@@ -61,7 +61,7 @@ const contains = (numbers, n) => {
 //
 
 // Первый вариант - O(n*n + n) = O(n*n)
-const getMissing1= numbers => {
+const getMissing1 = numbers => {
   // console.log("unsorted");
 
   // for (let i = 0; i < numbers.length; i++) {
@@ -205,8 +205,8 @@ const filterNegative = array => {
 
 
 let test = createRandomArray(-5, 5, 10);
-console.log(test);
-console.log(filterNegative(test));
+// console.log(test);
+// console.log(filterNegative(test));
 
 
 // Set (HashSet) - набор уникальных значений
@@ -226,8 +226,8 @@ const createSet = array => {
 };
 
 test = createRandomArray(2, 5 , 10);
-console.log(test);
-console.log(createSet(test));
+// console.log(test);
+// console.log(createSet(test));
 
 
 
@@ -273,11 +273,11 @@ const areSomeLeapYears = years => {
 };
 
 test = createRandomArray(1900, 2000 , 10);
-console.log(test);
-console.log(areAllLeapYears(test));
-console.log(areAllLeapYears([2000, 2020, 2024]));
-console.log(areSomeLeapYears(test));
-console.log(areSomeLeapYears([2001, 2300, 2025]));
+// console.log(test);
+// console.log(areAllLeapYears(test));
+// console.log(areAllLeapYears([2000, 2020, 2024]));
+// console.log(areSomeLeapYears(test));
+// console.log(areSomeLeapYears([2001, 2300, 2025]));
 
 
 
@@ -302,5 +302,96 @@ const getDigits = n => {
 
 
 let digits = getDigits(123456789);
-console.log(digits);
-console.log(getSum(digits));
+// console.log(digits);
+// console.log(getSum(digits));
+
+
+let words = ["Победи", "себя", "и", "выиграешь", "тысячи", "битв"];
+
+// *************
+// * Победи    *
+// * себя      *
+// * и         *
+// * выиграешь *
+// *************
+
+const paddEven = (str, length, char = " ") => {
+  let padding = length - str.length;
+
+  if (padding < 0) {
+    return str;
+  }
+
+  let paddingLeft = "".padStart(Math.floor(padding / 2), char);
+  let paddRight = "".padStart(Math.ceil(padding / 2), char);
+
+  return paddingLeft + str + paddRight
+}
+
+const frame = words => {
+
+  // Найдем самое длинное слово
+  let maxLength = 0;
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length > maxLength) {
+      maxLength = words[i].length;
+    }
+  }
+
+  // Вывести верхнюю рамку
+  let border = "".padStart(maxLength + 4, "*");
+  console.log(border);
+
+  // Вывести все слова с рамками по бокам и "padding"
+  for (let i = 0; i < words.length; i++) {
+    console.log("* " + paddEven(words[i], maxLength) + " *")
+  }
+
+  // Вывести нижнюю рамку
+  console.log(border);
+}
+
+// frame(words);
+
+
+let randoms = createRandomArray(0, 11, 10000);
+
+
+// Сколько раз встречается каждое число
+// Среднее значение ~5
+
+const getAverage = numbers => getSum(numbers) / numbers.length;
+
+
+// 0 - 2: 0 1 2
+const analyze = (numbers, max) => {
+  console.log(getAverage(numbers));
+
+  let frequencies = []; // [0, 0, 0]
+                        //  0  1  2 
+
+  for (let i = 0; i <= max; i++) {
+    frequencies[i] = 0;
+  }
+
+  for (let i = 0; i < numbers.length; i++) {
+    const number = numbers[i];
+    frequencies[number] += 1;
+  }
+
+  console.log(frequencies);
+
+  const averageFrequency = getAverage(frequencies);
+  
+  console.log(averageFrequency);
+
+  let diviations = [];
+
+  for (let i = 0; i < frequencies.length; i++) {
+    diviations[i] = frequencies[i] - averageFrequency;
+  }
+
+  console.log(diviations);
+}
+
+analyze(randoms, 10);
