@@ -1,4 +1,46 @@
-let numbers = [1, 13, 45, 2, -1, 0];
+console.log("Циклы");
+
+const createArray = (mapFunction = index => index) => length => {
+  const array = [];
+
+  for (let i = 0; i < length; i++) {
+    array.push(mapFunction(i));
+  }
+
+  return array;
+}
+
+let numbers = createArray()(10);
+console.log("Генерируем массив", numbers);
+
+
+const range = (start, end, step = 1) => 
+  createArray(index => start + index * step) (Math.ceil((end - start) / step));
+
+  
+console.log("Генерируем промежуток от 1 до 10", range(1, 11));
+console.log("Генерируем промежуток от 0 до -10", range(0, -11, -1));
+console.log("Генерируем промежуток от 3 до 11 с шагом 2", range(3, 12, 2));
+
+
+
+const randomInt = (min, max) => 
+  min + Math.floor(Math.random() * (max - min));
+
+const createRandomArray = (min, max) =>  length => {
+  let arr = [];
+  for (let i = 0; i < length; i++){
+    arr.push(randomInt(min, max));
+  }
+  return arr;
+};
+
+let randoms = createRandomArray(-5, 20) (10);
+console.log("Генерируем массив случайных чисело от -5 до 20", randoms);
+
+
+
+numbers = createArray(index => index + 1)(9);
 
 const getSum = numbers => {
   let sum = 0;
@@ -10,7 +52,22 @@ const getSum = numbers => {
   return sum;
 };
 
-// console.log(getSum(numbers));
+console.log("Вычисляем сумму чисел в массиве", getSum(numbers), numbers);
+
+
+
+const getProduct = numbers => {
+  let product = 1;
+
+  for (let i = 0; i < numbers.length; i++) {
+    product *= numbers[i];
+  }
+
+  return product;
+};
+
+console.log("Вычисляем произведение чисел в массиве", getProduct(numbers), numbers);
+
 
 const getMin = numbers => {
   let min = Infinity;
@@ -24,7 +81,9 @@ const getMin = numbers => {
   return min;
 }
 
-// console.log(getMin(numbers));
+console.log("Находим наименьшее число", getMin(randoms), randoms);
+
+
 
 const getMax = numbers => {
   let max = -Infinity;
@@ -37,7 +96,12 @@ const getMax = numbers => {
   return max;
 }
 
-// console.log(getMax(numbers));
+console.log("Находим наибольшее число", getMax(randoms), randoms);
+
+
+
+////// ЗАКЛАДКА
+
 
 const getRange = numbers => {
   return [getMin(numbers), getMax(numbers)];
@@ -176,17 +240,6 @@ const getMissing3 = numbers => {
 // console.log(numbers);
 
 
-const randomInt = (min, max) => 
-  min + Math.floor(Math.random() * (max - min));
-
-
-const createRandomArray = (min, max, length) => {
-  let arr = [];
-  for (let i = 0; i < length; i++){
-    arr.push(randomInt(min, max));
-  }
-  return arr;
-};
 
 // console.log(createRandomArray(-5, 20, 10));
 
@@ -354,7 +407,6 @@ const frame = words => {
 // frame(words);
 
 
-let randoms = createRandomArray(0, 11, 10000);
 
 
 // Сколько раз встречается каждое число
