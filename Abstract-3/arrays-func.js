@@ -83,51 +83,84 @@ const getMax = numbers =>
 console.log("Находим наибольшее число", getMax(randoms), randoms);
 
 
-////// ЗАКЛАДКА
+
+const getRange = numbers => [getMin(numbers), getMax(numbers)];
+
+console.log("Находим промежуток в котором лежат числа массива", getRange(randoms), randoms);
 
 
-// let numbers = [1, 3, 13, 45, 2, -1, 0];
-
-console.log(numbers.includes(13));
-console.log(numbers.includes(12));
 
 
-// let indexOf13 = numbers.indexOf(13);
-// numbers[indexOf13] = 100;
-// console.log(numbers);
-
-console.log(numbers.indexOf(13));
-console.log(numbers.indexOf(12));
-
-
-// a1 || a2 || a3 || .... || an
-const includes = (array, search) => 
+const includes = array => search => 
   array.some(item => item === search);
 
-console.log(includes(numbers, 13));
-console.log(includes(numbers, 12));
+const incl = includes(randoms);
+console.log("Содержится ли элемент в массиве", incl(0), randoms);
+console.log("Содержится ли элемент в массиве", incl(1), randoms);
 
 
-const isPositive = (n) => {
-  return n > 0;
-} 
+console.log("Содержится ли элемент в массиве", randoms.includes(0), randoms);
+console.log("Содержится ли элемент в массиве", randoms.includes(1), randoms);
 
-// a1 && a2 && a3 && .... && an
-const areAllPositive = array => 
-  array.every(n => n > 0);
+console.log("Индекс элемента в массиве", randoms.indexOf(0), randoms);
+console.log("Индекс элемента в массиве", randoms.indexOf(1), randoms);
 
 
-console.log(areAllPositive(numbers));
-console.log(areAllPositive([1, 2, 4]));
+// Первый вариант - O(n*n + n) = O(n*n)
+const getMissing1 = numbers => {
+  numbers = numbers.slice().sort((a, b) => a - b); 
+  // < 0  a < b
+  // 0    a = b
+  // > 0  a > b
 
-const filterNegative = array => array.filter(item => item < 0);
+  // 1 2 4
+  // 1 + 1 = 2
+  // 2 + 1 = 4 !неверно 
+  return 1 + numbers.find((number, index) => number + 1 != numbers[index + 1]);
+};
 
-console.log(filterNegative(numbers));
-console.log(filterNegative([-1, -2, 3, -4]));
+// Вариант вариант - O(n*n)
+const getMissing2 = numbers => 
+  range(1, numbers.length + 1).find(n => !includes(numbers) (n));
 
-const filterNumbersEqualToIndex = array => array.filter((n, index) => n === index);
 
-console.log(filterNumbersEqualToIndex([0, 3, 2, 4, 5, 5])) // [0, 2, 5]
+const getSumN = n => n * (n + 1) / 2;
+
+// Третий вариант - O(n)
+const getMissing3 = numbers => 
+  getSumN(numbers.length + 1) - getSum(numbers);
+
+
+let incomplete = [1, 2, 6, 7, 3, 5, 8, 9]; /*4*/ 
+console.log("Находим пропущеное число ", getMissing1(incomplete), incomplete);
+console.log("Находим пропущеное число ", getMissing2(incomplete), incomplete);
+console.log("Находим пропущеное число ", getMissing3(incomplete), incomplete);
+
+
+incomplete = [1, 2, 6, 4, 7, 3, 5, 8, 10]; /*9*/ 
+console.log("Находим пропущеное число ", getMissing1(incomplete), incomplete);
+console.log("Находим пропущеное число ", getMissing2(incomplete), incomplete);
+console.log("Находим пропущеное число ", getMissing3(incomplete), incomplete);
+
+
+
+// 1 -1 2 -2
+const filterNegative = array => 
+  array.filter(item => item < 0);
+
+console.log("Оставляем только отрицательные элементы массива ", filterNegative(randoms), randoms);
+
+
+
+const createSet = array => 
+  array.reduce((set, element) => {
+    !includes(set)(element) && set.push(element);
+    return set;
+  }, []);
+
+
+console.log("Создаем множество ", createSet(randoms), randoms);
+
 
 
 const isLeapYear = (year) => year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
@@ -138,92 +171,181 @@ const areAllLeapYears = years => years.every(isLeapYear);
 // false || true || true|| false || true || false = true
 const areSomeLeapYears = years => years.some(isLeapYear);
 
-// const map = mappingFucntion => numbers => {
+const years = createRandomArray(1900, 2000) (10);
 
-//   const map = [];
-
-//   for (let i = 0; i < numbers.length; i++) {
-//     map.push(/*операция на д элементом i*/);
-//   }
-
-//   return map;
-// }
-
-const getSquares = numbers => numbers.map(n => n * n);
+console.log("Все года високосные",  areAllLeapYears(years), years);
+console.log("Хотя бы один год високосный",  areSomeLeapYears(years), years);
 
 
-console.log(numbers);
-console.log(getSquares([1, 2 ,3 ]));
+// Т.к цикл while имеет не фиксированное количество итераций
+// Функции для работы с массивом нам не помогут
+const getDigits = n => {
+  let digits = []; // 1 2 3
+  
+  while (n != 0) {
+    digits.unshift(n % 10);
+    n = Math.trunc(n / 10);
+  }
+
+  return digits;
+};
+
+
+let digits = getDigits(123456789);
+
+let number = 123456789;
+console.log("Получаем массив цифр числа ", getDigits(number), number);
+
+
+const paddEven = (length, char = " ") => str => {
+  let padding = length - str.length;
+
+  if (padding < 0) {
+    return str;
+  }
+
+  let paddingLeft = "".padStart(Math.floor(padding / 2), char);
+  let paddRight = "".padStart(Math.ceil(padding / 2), char);
+
+  return paddingLeft + str + paddRight
+}
+
+const frame = words => {
+  // Найдем самое длинное слово
+  let maxLength = getMax(words.map(word => word.length))
+
+  // // Заготовить рамку
+  let border = "".padStart(maxLength + 4, "*");
+  const padWord = paddEven(maxLength);
+
+  let lines = [
+    border, 
+    ...words.map(word => "* " + padWord(word) + " *"), 
+    border
+  ];
+
+  lines.forEach(line => console.log(line));
+}
+
+
+// *************
+// * Победи    *
+// * себя      *
+// * и         *
+// * выиграешь *
+// *************
+
+let words = ["Победи", "себя", "и", "выиграешь", "тысячи", "битв"];
+
+frame(words);
 
 
 
 
-// [1..10]
+const getAverage = numbers => getSum(numbers) / numbers.length;
+
+const analyze = (numbers, max) => {
+  console.log("Анализируем генератор случайных чисел от 0 до " + max);
+
+  console.log("Среднее значение ", getAverage(numbers));
+
+
+  let frequencies = Array.from({ length: max + 1}).fill(0);
+  //createArray(() => 0) (max + 1);
 
 
 
-console.log(range(0, -10, -1));
-console.log(range(0, -10, -1)
-  .map(n => n * n)
-  .map(n => n / 2)
-  .map(n => Math.floor(n))
-  .filter(n => n % 4 === 0)
-  .map(n => "".padStart(n, "*"))
-);
+  numbers.forEach(number => frequencies[number] += 1);
+  console.log("Частота генерации каждого из чисел ", frequencies);
 
 
-// const createRandomArray = (min, max, length) => {
-//   // let arr = [];
-//   // for (let i = 0; i < length; i++){
-//   //   arr.push(randomInt(min, max));
-//   // }
-//   // return arr;
-// };
+  const averageFrequency = getAverage(frequencies);
+  console.log("Средняя частота", averageFrequency);
+
+
+  let diviations = frequencies.map(frequency => frequency - averageFrequency);
+  console.log("Отклонения частот от среднего", diviations);
+}
+
+analyze(createRandomArray(0, 11) (1000), 10);
 
 
 
-console.log(createRandomArray(-5, 10) (20));
+/// splice
+
+let array;
+
+// Удалить один элемент 
+array = [0, 1, 2, 3, 4, 5];
+array.splice(1, 1); // Удаляем элемент с индексом 1
+console.log(array);
+
+// Удалить несколько элементов
+array = [0, 1, 2, 3, 4, 5];
+array.splice(1, 3); // Удаляем 3 элемента начиная с индекса 1
+console.log(array);
+
+// Заменить один элемент
+array = [0, 1, 2, 3, 4, 5];
+array.splice(1, 1, "a"); // Заменяем элемент с индексом 1 на "a"
+console.log(array);
+
+// Заменить последовательность элементов на другую последовательность
+array = [0, 1, 2, 3, 4, 5];
+array.splice(1, 3, "a", "b", "c"); // Заменяем 3 элемента начиная с индекса 1 на элементы "a", "b", "c"
+console.log(array);
+
+// Вставить новый элемент(ы) в определенную позицию 
+array = [0, 1, 2, 3, 4, 5];
+array.splice(1, 0, "a", "b"); // Вставляем "a" на позицию с индеком 1
+console.log(array);
 
 
-// const copy = array => Array.from(array);
+array = [0, 1, 2, 3, 10];
 
-const tmp = createRandomArray(0, 10) (10);
-const copy = Array.from(tmp);
+let array2 = [-1, ...array];
+array2 = [...array, 4];
 
-console.log(tmp);
+array2 = [-2, -1, ...array, 4, 5];
 
-console.log(tmp.sort());
+array2 = [-2, -1, ...array, 4, 5, ...(false ? [1 , 2] : [])];
 
-console.log(tmp);
-console.log(copy);
-// console.log(tmp.reverse());
+console.log(array2);
 
 
-//reduce // C# Aggregate
-// 0 1 2 3 4 
-// (0, 0) => 0 + 0 = 0 
-// (0, 1) => 0 + 1 = 1
-// (1, 2) => 1 + 2 = 3
-// (3, 3) => 3 + 3 = 6
-// (6, 4) => 6 + 4 = 10
 
-const map = mapingFucntion => array => 
-  array.reduce((mapped, element) => {
-    mapped.push(mapingFucntion(element));
-    return mapped;
-  }, []);
+const join = (glue, ...numbers) => {
+  console.log(numbers);
+  return numbers.join(glue);
+}
 
-// const getSum = numbers => {
-//   let sum = 0;
+console.log("Склеиваем элементы", join("--", 1, 2, 3, 4, 10, 20));
 
-//   for (let i = 0; i < numbers.length; i++) {
-//     sum += numbers[i];
-//   }
+console.log("Склеиваем элементы", join("--", ...[1, 2, 3, 4, 10, 20]));
 
-//   return sum;
-// };
 
-console.log(getSum(range(0, 5)));
-console.log(getProduct(range(1, 5)));
-console.log(map(n => n * n) (range(0, 5)));
+const segment = [0, 20];
+console.log(createRandomArray(...segment) (10));
+
+
+for (let index = 0; index < array.length; index++) {
+  console.log(array[index]);
+}
+
+// Устарело, желательно не использовать
+for (const index in array) {
+  console.log(array[index]);
+}
+
+// Можно использовать
+// Но зачем, если есть array.forEach, array.map и т.д.
+for (const value of array) {
+  console.log(value);
+}
+
+
+let arrayOfArray = [[1, 2], 3, [[4, 5], 6], 7];
+console.log(arrayOfArray);
+console.log(arrayOfArray.flat(Infinity));
+
 
