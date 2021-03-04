@@ -349,3 +349,105 @@ console.log(arrayOfArray);
 console.log(arrayOfArray.flat(Infinity));
 
 
+
+
+/// 
+
+const reduce = (array) => {
+  let accumulator = ""; // НАЧАЛЬНОЕ ЗНАЧЕНИЕ
+
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    const result = str + element + ((index < array.length - 1) ? glue : "") //doSomething(element);// ДЕЛАЕМ ОПЕРАЦИЮ С ЭЛЕМЕНТОМ
+    accumulator += result; // Добавляем результат в аккумулятор
+  }
+
+  return accumulator;
+}
+
+
+const join2 = (glue, array) => 
+  array.reduce(
+    (str, element, index) => str + element + ((index < array.length - 1) ? glue : ""), 
+    ""
+  );
+
+console.log(join2("--", array));
+
+
+// Мы выполняем оперцию над каждым элементом исходного массива
+// и накапливаем результаты В ЛЮБоМ виде в аккумулятор и возвращаем его 
+array.reduce(operation, startValue);
+
+
+const map = (array) => {
+  let mappedArray = []; // Новый массив
+
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    const result = doSomething(element);// ДЕЛАЕМ ОПЕРАЦИЮ С ЭЛЕМЕНТОМ
+    mappedArray.push(result); // Добавляем результат в новый массив
+  }
+
+  return mappedArray;
+}
+
+const map = (array, operation) => 
+  array.reduce((mapped, element, index) => mapped.push(operation(element, index)), [])
+
+
+
+// Нужно получить новый массив, в котором для кажого элемента из исходного
+// будет новое трнсформированное значение 
+// т.е [1,2,3] => [1,4,9]
+array.map(operation)
+
+
+const filter = (array) => {
+  let filterArray = []; // фильтрованные массив
+
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    const result = predicat(element);// проверяем соответсвие элемента условию
+    if (result) {
+      filterArray.push(element); // Добавляем элемент в отфильтрованный массив
+    }
+  }
+
+  return filterArray;
+}
+
+const map = (array, predicate) => 
+  array.reduce((filtered, element, index) => {
+    if (predicate(element, index)) {
+      filtered.push(element); 
+    } 
+    return filtered;
+  }, []);
+
+
+
+array.filter(predicate)
+
+
+const every = (array, predicate) => {
+  
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    if (!predicate(element)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+//        [0, 1, -1, 2];
+// (((true && true) && true) && false) && true;
+// false
+
+const every = (array, predicate) =>
+  array.reduce((result, element, index) => result && predicate(element, index), true);
+
+array.every(predicate);
+// array.some
+
