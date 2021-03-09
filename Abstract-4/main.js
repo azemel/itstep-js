@@ -2,11 +2,8 @@
 const array = [1, 2, 3, 4];
 array[0] // value
 
-
-
 let key = "value";
 let func =  () => "something";
-
 
 // POJO 
 const obj = {
@@ -19,8 +16,9 @@ const obj = {
   "some-key": "some-value",
 };
 
-console.log(obj["key"]); // value
+console.log(obj[key]); // value
 console.log(obj.key); // value
+
 console.log(obj.func()); // value
 console.log(obj.child.key2); // value
 console.log(obj["some-key"]); // value
@@ -107,6 +105,8 @@ console.log(sum("2", 2));
 const sumArray = numbers => {
   if (numbers instanceof Array) {
     return numbers.reduce((sum, number) => sum + number, 0);
+  } else if (typeof numbers.length !== "undefined"){
+    // Симитировать reduce с помощью цикла for
   }
 
   console.log("Ошибка");
