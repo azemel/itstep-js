@@ -12,20 +12,59 @@ let validForm = {
   username: "anton",
   password: "anton!anton",
   age: "20",
+  height: "100",
 };
 
 let invalidForm = {
   username: "anto",
   password: "anto",
   age: "20a",
+  height: "500"
 };
 
 
+// ValidationState = Valid | Invalid {string}
+// ValidationState = [boolean, Maybe<string>]
+// string -> ValidationState
 const validateUsername = (username) => (
   username.length < 5
   ? [false, "Логин должен быть не меньше 5 символов"]
   : [true, null]
 );
+
+// string -> ValidationState
+const createValidationState = (value) => ({
+  value, // string - Исходное значение поля
+  result: value, // any - Чистое значение поля
+  isValid: true, //bolean - Флаг валидности поля
+  error: null // string - Ошибка (если есть )
+});
+
+const withError = (state, error) => ({
+  value: state.value,
+  result: state.result,
+  isValid: false,
+  error
+})
+
+// ValidationState -> required -> length(8) -> hasChar(ExclamationMark) -> ValidationState
+// ValidationState -> required -> isNumber() -> isInRange(0, 150) -> ValidationState
+
+const required = (state) => {
+  if (!state.isValid) {
+    return state;
+  }
+
+  return state.result.length > 0 ? state : withError(state, "Обязательное поле");
+}
+
+const length = (minLength) => (state) => {
+  if (!state.isValid) {
+    return state;
+  }
+
+  return state.result.length >= minLength ? state : withError(state, "Длина должна быть не меньше " + minLength);
+}
 
 const validatePassword = (password) => {
   
@@ -54,6 +93,79 @@ const validateAge = (age) => {
   return [true, null];
 }
 
+const validateHeight = (height) => {
+  let heightNumber = parseInt(height);
+
+  if (isNaN(heightNumber) || height !== String(heightNumber)) {
+    return [false, "Рост должен быть числом"];
+  }
+
+  if (height < 0 || height > 150) {
+    return [false, "Рост должен быть в промежутке от 0 до 300 см"];
+  }
+
+  return [true, null];
+}
+
+
+const validate = (...validators) => (initialState) => 
+  validators.reduce((state, validator) => validator(state), initialState);
+
+
+let UserFormValidation = {
+  username: validate(required, length(5)),
+  password: validate(required, length(8), contains("!")),
+  age: (state) => [true,]
+  // age: validateAge,
+  // height: validateHeight,
+};
+
+const validateFiled = key => value => {
+  const state = createValidationState(value);
+
+  return (
+    UserFormValidation.hasOwnProperty(key)
+    ? UserFormValidation[key](state)
+    : state
+  );
+}
+  // UserFormValidation[key] ? UserFormValidation[key](value) : UserFormValidation["_default"](value);
+
+// (string, string) => ValidationState
+// const validate = (key, value) => {
+//   switch(key) {
+//     case "username": return validateUsername(value);
+//     case "password": return validatePassword(value);
+//     case "age": return validateAge(value);
+//     default: return [true, null];
+//   }
+// }
+
+// UserForm = { string: string }
+// Errors = { string: string }
+// Maybe<User> = User | null
+// UserForm -> [boolean, Errors, Maybe<User>]
+// form -> validateFields -> isFormValid -> 
+//                        ----------------> [isValid, errors, createUser]
+// pipe(form, validateFileds, isFormValid, createResult)
+const validateUserForm = form => {
+
+  const validationStates = 
+    Object.entries(form)
+      .map(([key, value]) => [key, validateFiled(key)(value)])
+      .filter(([, state]) => !state.isValid); // [ [key, ValidationState] ]
+
+  const isValid = validationStates.length == 0;
+
+  return [
+    isValid, 
+    Object.fromEntries(
+      validationStates.map(([key, state]) => [key, state.error])
+    ), 
+    isValid && createUser(form)
+  ];
+}
+
 const createUser = ({
   username,
   password,
@@ -65,37 +177,7 @@ const createUser = ({
   dateOfRegistration: new Date()
 });
 
-
-const validateUserForm = form => {
-  const { username, password, age } = form;
-
-  let isFormValid = true;
-  const errors = [];
-
-
-  let isValid = true;
-  let error = null;
-
-  [isValid, error] = validateUsername(username);
-  isFormValid &= isValid;
-  errors.push(error);
-
-  [isValid, error] = validatePassword(password);
-  isFormValid &= isValid;
-  errors.push(error);
-
-  [isValid, error] = validateAge(age);
-  isFormValid &= isValid;
-  errors.push(error);
-
-  return [
-    isFormValid, 
-    errors, 
-    isFormValid && createUser(form)
-  ];
-}
-
-
+// UserForm -> void (Побочный эффект)
 // Пограничная функция между миром чистых функций и миром побочных эффектов
 const handleSubmit = (form) => {
   // проверка типов данных 
