@@ -23,15 +23,6 @@ let invalidForm = {
 };
 
 
-// ValidationState = Valid | Invalid {string}
-// ValidationState = [boolean, Maybe<string>]
-// string -> ValidationState
-const validateUsername = (username) => (
-  username.length < 5
-  ? [false, "Логин должен быть не меньше 5 символов"]
-  : [true, null]
-);
-
 // string -> ValidationState
 const createValidationState = (value) => ({
   value, // string - Исходное значение поля
@@ -66,48 +57,6 @@ const length = (minLength) => (state) => {
   return state.result.length >= minLength ? state : withError(state, "Длина должна быть не меньше " + minLength);
 }
 
-const validatePassword = (password) => {
-  
-  if (password.length < 8) {
-    return [false, "Пароль должен быть не меньше 8 символов"];
-  }
-
-  if (password.indexOf("!") < 0) {
-    return [false,  "Пароль должен содержать '!'"];
-  }
-
-  return [true, null];
-}
-
-const validateAge = (age) => {
-  let ageNumber = parseInt(age);
-
-  if (isNaN(ageNumber) || age !== String(ageNumber)) {
-    return [false, "Возраст должен быть числом"];
-  }
-
-  if (age < 0 || age > 150) {
-    return [false, "Возраст должен быть в промежутке от 0 до 150 лет"];
-  }
-
-  return [true, null];
-}
-
-const validateHeight = (height) => {
-  let heightNumber = parseInt(height);
-
-  if (isNaN(heightNumber) || height !== String(heightNumber)) {
-    return [false, "Рост должен быть числом"];
-  }
-
-  if (height < 0 || height > 150) {
-    return [false, "Рост должен быть в промежутке от 0 до 300 см"];
-  }
-
-  return [true, null];
-}
-
-
 const validate = (...validators) => (initialState) => 
   validators.reduce((state, validator) => validator(state), initialState);
 
@@ -130,16 +79,6 @@ const validateFiled = key => value => {
   );
 }
   // UserFormValidation[key] ? UserFormValidation[key](value) : UserFormValidation["_default"](value);
-
-// (string, string) => ValidationState
-// const validate = (key, value) => {
-//   switch(key) {
-//     case "username": return validateUsername(value);
-//     case "password": return validatePassword(value);
-//     case "age": return validateAge(value);
-//     default: return [true, null];
-//   }
-// }
 
 // UserForm = { string: string }
 // Errors = { string: string }
@@ -197,3 +136,5 @@ const handleSubmit = (form) => {
 handleSubmit(validForm);
 console.log("-----");
 handleSubmit(invalidForm);
+
+

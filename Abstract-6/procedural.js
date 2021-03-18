@@ -33,7 +33,7 @@ const handleSubmit = (form) => {
     isValid = false;
   }
   
-  if (password.length < 8) {
+  if (password.length < 10) {
     errors["password"] = "Пароль должен быть не меньше 8 символов";
     isValid = false;
   }
