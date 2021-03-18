@@ -9,3 +9,21 @@
 2.1 Конструктор объекта box (ящик): 
   amount 
   changeAmount (transaction) => ??
+
+class Box {
+  amount = 0;
+
+
+  changeAmount(transaction) {
+    this.amount += transaction;
+  }
+}
+
+---
+
+const box = new Box();
+
+
+box.changeAmount(transaction)
+
+box.amount
