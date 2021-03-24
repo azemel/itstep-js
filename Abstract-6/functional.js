@@ -64,7 +64,7 @@ const validate = (...validators) => (initialState) =>
 let UserFormValidation = {
   username: validate(required, length(5)),
   password: validate(required, length(8), contains("!")),
-  age: (state) => [true,]
+  // age: (state) => state,
   // age: validateAge,
   // height: validateHeight,
 };
