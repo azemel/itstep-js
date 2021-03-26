@@ -51,6 +51,10 @@ box.addEventListener("amountChanged", (amount) => {
   console.log("Новая состояние коробки: ", amount);
 });
 
+// box.addEventListener("amountChaged", (amount, transaction) => {
+//   document.body.append(e("div", {}, "Новая транзакция: " + transaction))
+// });
+
 
 // let box = new Box(["груша", "груши", "груш"]);
 
