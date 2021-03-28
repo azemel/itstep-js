@@ -164,7 +164,7 @@
         <li>Простые объекты</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-9">HW-10</a></td>
+    <td valign="top"><a href="./HW-10">HW-10</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -179,7 +179,7 @@
         <li>Объекты с прототипами на основе функций-конструкторов</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-9">HW-11</a></td>
+    <td valign="top"><a href="./HW-11">HW-11</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -195,7 +195,99 @@
         <li>Объекты на основе классов</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-9">HW-12</a></td>
+    <td valign="top"><a href="./HW-12">HW-12</a></td>
+    <td valign="top"></td>
+  </tr>
+
+  
+  <tr>
+    <td valign="top">13</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/2b8hheXixXDsgV2Le2BB1g0gIrZPKoLfCeEkmMi3KjOeVqdlOG2IzBTbpCcuPyhO.LBotm0yyujKJjmaq?startTime=1615813074000">15.03</a>
+    </td>
+    <td valign="top"> 
+      Парадигмы 1
+      <ul>
+        <li>Процедурное, Функциональное, Объектно ориентированное</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW-13">HW-13</a></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top">14</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/ufg6zGSZzy7vXJ8pVL8dsHqZdWPTODiGuaL3_djbPWVqFNOPHu8mpoJFfTrw53-1.wtpQ8ljvm1MEz9BG">17.03</a>
+    </td>
+    <td valign="top"> 
+      Парадигмы 2
+      <ul>
+        <li>Процедурное, Функциональное, Объектно ориентированное</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW-14">HW-14</a></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top">15</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/ufg6zGSZzy7vXJ8pVL8dsHqZdWPTODiGuaL3_djbPWVqFNOPHu8mpoJFfTrw53-1.wtpQ8ljvm1MEz9BG">18.03</a>
+    </td>
+    <td valign="top"> 
+      Парадигмы 3
+      <ul>
+        <li>Процедурное, Функциональное, Объектно ориентированное</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW-15">HW-15</a></td>
+    <td valign="top"></td>
+  </tr>
+
+  <tr>
+    <td valign="top">16</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/O78VRQ_SjxNSqmFbliXwnesgQmo1NcKRA272gcnmW_u6UG9Nrz3Yj8xCvK7dV5sE.LN4us5uQiMTQtH2b">24.03</a>
+    </td>
+    <td valign="top"> 
+      Разное
+      <ul>
+        <li>Рекурсия</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW-16">HW-16</a></td>
+    <td valign="top"></td>
+  </tr>
+
+  <tr>
+    <td valign="top">17</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/r7kBvEB1AiPQjUf96YaRxEfwpX2ZTjd-fTs7xNauSZmqYLN1WGrfhmN6w1GBykYt.8-FMSKodHQ6m_pSr">25.03</a>
+    </td>
+    <td valign="top"> 
+      Разное
+      <ul>
+        <li>Рекурсия</li>
+        <li>Деревья</li>
+        <li>События</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW-17">HW-17</a></td>
+    <td valign="top"></td>
+  </tr>
+
+  <tr>
+    <td valign="top">18</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/_fVsyV0tzB3d8tseBne3P3EeyCm5v0VGvWfXEdtJ4qmL3EZmdUyClHYGHjH2-GAi.kZwgARRgTL5d6ASy">26.03</a>
+    </td>
+    <td valign="top"> 
+      Web 1
+      <ul>
+        <li>Поиск элементов в DOM</li>
+        <li>Создание элементов DOM</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW-18">HW-18</a></td>
     <td valign="top"></td>
   </tr>
 </table>
