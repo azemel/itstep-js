@@ -22,7 +22,7 @@
         <li>if/else</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-1">HW-1</a></td>
+    <td valign="top"><a href="./HW1">HW1</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -40,7 +40,7 @@
         <li>Функции</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-2">HW-2</a></td>
+    <td valign="top"><a href="./HW2">HW2</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -56,7 +56,7 @@
         <li>Функции</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-3">HW-3</a></td>
+    <td valign="top"><a href="./HW3">HW3</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -71,7 +71,7 @@
         <li>Циклы</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-4">HW-4</a></td>
+    <td valign="top"><a href="./HW4">HW4</a></td>
     <td valign="top"></td>
   </tr>
   
@@ -86,7 +86,7 @@
         <li>Массивы + циклы</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-5">HW-5</a></td>
+    <td valign="top"><a href="./HW5">HW5</a></td>
     <td valign="top"></td>
   </tr>
   
@@ -101,7 +101,7 @@
         <li>Массивы + циклы и функции</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-6">HW-6</a></td>
+    <td valign="top"><a href="./HW6">HW6</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -117,7 +117,7 @@
         <li>Массивы + функции</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-7">HW-7</a></td>
+    <td valign="top"><a href="./HW7">HW7</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -132,7 +132,7 @@
         <li>Массивы + функции</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-8">HW-8</a></td>
+    <td valign="top"><a href="./HW8">HW8</a></td>
     <td valign="top"></td>
   </tr>
   
@@ -148,7 +148,7 @@
         <li>Простые объекты</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-9">HW-9</a></td>
+    <td valign="top"><a href="./HW9">HW9</a></td>
     <td valign="top"></td>
   </tr>
   
@@ -164,7 +164,7 @@
         <li>Простые объекты</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-10">HW-10</a></td>
+    <td valign="top"><a href="./HW10">HW10</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -179,7 +179,7 @@
         <li>Объекты с прототипами на основе функций-конструкторов</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-11">HW-11</a></td>
+    <td valign="top"><a href="./HW11">HW11</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -195,7 +195,7 @@
         <li>Объекты на основе классов</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-12">HW-12</a></td>
+    <td valign="top"><a href="./HW12">HW12</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -211,7 +211,7 @@
         <li>Процедурное, Функциональное, Объектно ориентированное</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-13">HW-13</a></td>
+    <td valign="top"><a href="./HW13">HW13</a></td>
     <td valign="top"></td>
   </tr>
   <tr>
@@ -225,7 +225,7 @@
         <li>Процедурное, Функциональное, Объектно ориентированное</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-14">HW-14</a></td>
+    <td valign="top"><a href="./HW14">HW14</a></td>
     <td valign="top"></td>
   </tr>
   <tr>
@@ -239,7 +239,7 @@
         <li>Процедурное, Функциональное, Объектно ориентированное</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-15">HW-15</a></td>
+    <td valign="top"><a href="./HW15">HW15</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -254,7 +254,7 @@
         <li>Рекурсия</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-16">HW-16</a></td>
+    <td valign="top"><a href="./HW16">HW16</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -271,7 +271,7 @@
         <li>События</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-17">HW-17</a></td>
+    <td valign="top"><a href="./HW17">HW17</a></td>
     <td valign="top"></td>
   </tr>
 
@@ -287,7 +287,53 @@
         <li>Создание элементов DOM</li>
       </ul>
     </td>
-    <td valign="top"><a href="./HW-18">HW-18</a></td>
+    <td valign="top"><a href="./HW18">HW18</a></td>
     <td valign="top"></td>
+  </tr>
+
+
+
+  <tr>
+    <td valign="top">19</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/EETdKzCeHCHDfrS_BwDXNZREaQ432lMu-BfysQfQaP9lwz2QwxIpYFK0T_rEvKSg.jJ5_-YXGjtJ2DZin">29.03</a>
+    </td>
+    <td valign="top"> 
+      Web 2
+      <ul>
+        <li>Игра Память</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW19">HW19</a></td>
+    <td valign="top"></td>
+  </tr>
+
+  <tr>
+    <td valign="top">20</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/YjsB0B1xAhy_hxSEDoVA4BII2DTo37CczCRyd1lRlS5Zg8Zt_TGfHEntLxf5mB3z.94PAM3ftfNl-Eu8E">31.03</a>
+    </td>
+    <td valign="top"> 
+      Web 3
+      <ul>
+        <li>Игра Память</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW20">HW20</a></td>
+    <td valign="top"><a href="./EX1">EX1</a></td>
+  </tr>
+  <tr>
+    <td valign="top">21</td>
+    <td valign="top">
+      <a>01.04</a>
+    </td>
+    <td valign="top"> 
+      Web 4
+      <ul>
+        <li>Игра Память</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW21">HW21</a></td>
+    <td valign="top"><a href="./EX2">EX2</a></td>
   </tr>
 </table>
