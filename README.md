@@ -325,7 +325,7 @@
   <tr>
     <td valign="top">21</td>
     <td valign="top">
-      <a>01.04</a>
+      <a href="https://zoom.us/rec/share/Me2rpATPZV--dtbPSeUl-rqt0ZONpT-XoQ1sSrD8L1r3cPm4Zf8BEccb_f6BMIGj.MfZVoKqOz-kt8XdX">01.04</a>
     </td>
     <td valign="top"> 
       Web 4
