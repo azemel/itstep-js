@@ -34,6 +34,8 @@ let endTime = 0;
 let gridDiv = null;
 let notifyGameOver = null;
 
+let isRunning = false;
+
 const createGame = (gameDiv, timerDiv, gameOverCallback) => {
   notifyGameOver = gameOverCallback;
 
@@ -52,19 +54,47 @@ const createGame = (gameDiv, timerDiv, gameOverCallback) => {
     }, 
     ...createArray(createCard)(N * M)
   );
-
-  timerDiv.innerText = "00:00";
   gameDiv.append(gridDiv);
 
-  startTime = Date.now(); // количество миллисекунд прошедших с 1 января 1970  Эпоха Unix
-  gameTimer = setInterval(updateGameTimer(timerDiv), 1000);
 
+  timerDiv.innerText = "00:00";
+
+
+  return {
+    start: () => {
+      isRunning = true;
+      startTime = Date.now(); // количество миллисекунд прошедших с 1 января 1970  Эпоха Unix
+      gameTimer = setInterval(updateGameTimer(timerDiv), 1000);
+    },
+
+    togglePause: () => {
+      togglePause();
+
+      return isRunning;
+    }
+  };
 };
 
-const togglePause = () => null;
+let pauseStart = null;
+
+const togglePause = () => {
+  if (isRunning) {
+    pauseStart = Date.now();
+    isRunning = false;
+    // показать home-screen
+  } else {
+    startTime += Date.now() - pauseStart;
+    pauseStart = null;
+    isRunning = true;
+  }
+};
 
 
 const updateGameTimer = (timerDiv) => () => {
+  if (!isRunning) {
+    return;
+  }
+
   const time = Date.now() - startTime;
 
   const s = Math.round(time / 1000) % 60;
@@ -89,8 +119,6 @@ const createCard = (index) => {
 }
 
 
-
-
 let pair = []; // 0-2 элементов
 
 const openCard = (cardDiv) => {
@@ -108,6 +136,10 @@ const closeCard = (cardDiv) => {
 const extractCardIndex = (cardDiv) => parseInt(cardDiv.dataset.index);
 
 const handleClick = (event) => {
+
+  if (!isRunning) {
+    return;
+  }
 
   console.log("before", pair);
 
@@ -146,7 +178,7 @@ const handleClick = (event) => {
 
         gridDiv.remove(); // Удаляем элемент со страницы
         // gridDiv.parentElement.removeChild(gridDiv); // removeChild - удалем у родителя переданный элемент
-
+        isRunning = false;
         notifyGameOver(endTime - startTime);
       }
     

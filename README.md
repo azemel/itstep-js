@@ -228,6 +228,7 @@
     <td valign="top"><a href="./HW14">HW14</a></td>
     <td valign="top"></td>
   </tr>
+  
   <tr>
     <td valign="top">15</td>
     <td valign="top">
@@ -291,8 +292,6 @@
     <td valign="top"></td>
   </tr>
 
-
-
   <tr>
     <td valign="top">19</td>
     <td valign="top">
@@ -322,6 +321,7 @@
     <td valign="top"><a href="./HW20">HW20</a></td>
     <td valign="top"><a href="./EX1">EX1</a></td>
   </tr>
+
   <tr>
     <td valign="top">21</td>
     <td valign="top">

@@ -54,6 +54,10 @@ html, body {
   background-color: chartreuse;
 }
 
+  .game-state_hidden {
+    display: none;
+  }
+
 .game-state-placeholder {
   height: 100px;
   width: 100%;
@@ -64,6 +68,9 @@ html, body {
   width: 100%;
   background-color: coral;
 }
+  .button-start_hidden {
+    display: none;
+  }
 
 
 .button-pause {
@@ -75,6 +82,9 @@ html, body {
   background-color: coral;
 }
 
+  .button-pause_hidden {
+    display: none;
+  }
 
 .game-timer {
   font-size: 24px;
