@@ -32,11 +32,16 @@ const createUi = () => {
       home.classList.remove("home_hidden");
       buttonPause.classList.add("button-pause_hidden");
       buttonStart.classList.remove("button-start_hidden");
+
+      buttonPause.removeEventListener("click", togglePause);
+
       console.log("Game over", time);
     });
 
-    buttonPause.addEventListener("click", () => {
+    const togglePause = () => {
       const isRunning = game.togglePause();
+      // const isRunning = game.togglePause();
+
       console.log(isRunning);
 
       if (isRunning) {
@@ -44,7 +49,9 @@ const createUi = () => {
       } else {
         home.classList.remove("home_hidden");
       }
-    });
+    };
+
+    buttonPause.addEventListener("click", togglePause);
 
     game.start();
   
