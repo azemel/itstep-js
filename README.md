@@ -336,4 +336,50 @@
     <td valign="top"><a href="./HW21">HW21</a></td>
     <td valign="top"><a href="./EX2">EX2</a></td>
   </tr>
+
+  <tr>
+    <td valign="top">22</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/Ycq4pfBvpo7_CCYPiLPCY1I426N5WY3HiA6gNFbNaan1gtnEGL4Fps6tqiQ-vjuY.05zgnvHrQkeN9bWw">05.04</a>
+    </td>
+    <td valign="top"> 
+      Web 5
+      <ul>
+        <li>Игра Память</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW22">HW22</a></td>
+    <td valign="top"><a href="./EX3">EX3</a></td>
+  </tr>
+  
+
+  <tr>
+    <td valign="top">23</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/f-Z5Hktcv5eKJo1CBtuhTGNudnfmDbyLqpiF3iwGRQjBPBuAlFLVtrKmZWSsEPB-.iA7dL0I0GaB4rrfQ">07.04</a>
+    </td>
+    <td valign="top"> 
+      Web 6
+      <ul>
+        <li>UI: Слайдер</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW23">HW23</a></td>
+  </tr>
+
+  <tr>
+    <td valign="top">24</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/ixfOaRfjT6tlP3RLWgQTIu502hX3GfhKJI_yJYMQpngPN9TSZI7wbXEr_6YAdhQb.auUKOf8pYB5VEVec">08.04</a>
+    </td>
+    <td valign="top"> 
+      Web 7
+      <ul>
+        <li>UI: Слайдер</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW24">HW24</a></td>
+    <td valign="top"><a href="./EX4">EX4</a></td>
+  </tr>
 </table>
+
