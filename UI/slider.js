@@ -17,6 +17,8 @@ class Slider {
   _paddingLeft = 0;
   _paddingRight = 0;
   _currentIndex = 0;
+
+  _playTimer = null;
   
   // const dx = 200; // шаг, на котоырй мы смещаем элемент
   // let x = 0; // реальная позицию элемента
@@ -49,7 +51,7 @@ class Slider {
 
     x = Math.max(min, Math.min(max, x));
 
-    console.log(x, this._paddingLeft);
+    // console.log(x, this._paddingLeft);
     
     this._film.style.transform = "translateX(" + x + "px)";
   }
@@ -107,10 +109,22 @@ class Slider {
 
   // }
 
+  // 0 1 2 3 
+  // 0 1 2 3 4 5 6 7 8 9 10
+  // 0 1 2 3 0 1 2 3 0 1 2 ...
+  // В модульной арифметике: a mod b = c [0, b)
+  // В джс: -a mod b = c (-b, -0]
 
   moveSlide(direction) {
     this._slides[this._currentIndex].classList.remove("slide_active");
-    this._currentIndex = Math.max(0, Math.min(this._currentIndex + direction, this._slides.length - 1));
+
+    let index = (this._currentIndex + direction) % this._slides.length;
+    if (index < 0) {
+      index = this._slides.length + index;
+    }
+
+    // Math.min(this._currentIndex + direction, this._slides.length - 1)
+    this._currentIndex = Math.max(0, index);
     this._slides[this._currentIndex].classList.add("slide_active");
 
     this._upadatePostion();
@@ -125,6 +139,16 @@ class Slider {
     this.moveSlide(-1);
   }
 
+  firstSlide() {
+    this.goToSlide(0);
+  }
+
+
+  lastSlide() {
+    this.goToSlide(this._slides.length - 1);
+  }
+
+
   goToSlide(index) {
     this.moveSlide(index - this._currentIndex)
   }
@@ -133,8 +157,24 @@ class Slider {
     return this._slides[this._currentIndex];
   }
 
-  // //---
-  // play() {}
-  // stop() {}
+
+  play(direction = 1, dt = 1000) {
+    if (this._playTimer !== null) {
+      clearInterval(this._playTimer);
+    }
+
+    this._playTimer = setInterval(() => {
+      this.moveSlide(direction);
+    }, dt);
+
+    // this.moveSlide(direction);
+  }
+
+  stop() {
+    if (this._playTimer !== null) {
+      clearInterval(this._playTimer);
+    }
+    this._playTimer = null;
+  }
 
 }
