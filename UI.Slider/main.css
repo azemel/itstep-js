@@ -9,8 +9,6 @@ html, body {
 }
 
 body {
-  padding-top: 2000px;
-
   /* display: flex;
   flex-direction: column;
   align-items: center; */
@@ -31,9 +29,9 @@ body {
 }
 
 .slider {
-  padding: 20px;
+  /* padding: 20px;
   border: 20px solid red;
-  margin: 40px;
+  margin: 40px; */
 }
 
 .slider__container {

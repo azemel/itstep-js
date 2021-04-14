@@ -12,7 +12,7 @@
 // ~ Аватоплей
 
 window.addEventListener("load", () => {
-  const slider = Slider.fromData([1, 2, 3, 4, 5, 6, 7], createSlide);
+  const slider = Slider.fromData([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], createSlide);
   
   // const slider2 = Slider.fromData([9, 8, 7, 6, 5 , 4, 3, 2, 1], createSlide);
 
@@ -25,29 +25,29 @@ window.addEventListener("load", () => {
     slider.prevSlide();
     // slider2.prevSlide();
   });
-  document.querySelector(".button_left").addEventListener("mouseenter", () => {
-    slider.play(-2);
-    // slider2.nextSlide();
-  });
-
-  document.querySelector(".button_left").addEventListener("mouseleave", () => {
-    slider.stop();
-    // slider2.nextSlide();
-  });
-
-  // document.querySelector(".button_right").addEventListener("click", () => {
-  //   slider.nextSlide();
+  // document.querySelector(".button_left").addEventListener("mouseenter", () => {
+  //   slider.play(-2);
   //   // slider2.nextSlide();
   // });
-  document.querySelector(".button_right").addEventListener("mouseenter", () => {
-    slider.play();
-    // slider2.nextSlide();
-  });
 
-  document.querySelector(".button_right").addEventListener("mouseleave", () => {
-    slider.stop();
+  // document.querySelector(".button_left").addEventListener("mouseleave", () => {
+  //   slider.stop();
+  //   // slider2.nextSlide();
+  // });
+
+  document.querySelector(".button_right").addEventListener("click", () => {
+    slider.nextSlide();
     // slider2.nextSlide();
   });
+  // document.querySelector(".button_right").addEventListener("mouseenter", () => {
+  //   slider.play();
+  //   // slider2.nextSlide();
+  // });
+
+  // document.querySelector(".button_right").addEventListener("mouseleave", () => {
+  //   slider.stop();
+  //   // slider2.nextSlide();
+  // });
 
 
   let isSpacePressed = false;
@@ -130,11 +130,11 @@ window.addEventListener("load", () => {
 
 
   // sliderContainer.addEventListener("mouseover", console.log);
-  sliderContainer.addEventListener("mouseenter", (event) => {
-    console.log(event);
+  // sliderContainer.addEventListener("mouseenter", (event) => {
+  //   console.log(event);
 
-    slider.play();
-  });
+  //   slider.play();
+  // });
 
   sliderContainer.addEventListener("mouseleave", (event) => {
     console.log(event);
@@ -146,13 +146,26 @@ window.addEventListener("load", () => {
     // console.log(sliderContainer.offsetTop,sliderContainer.offsetLeft );
     const left = sliderContainer.offsetLeft;
   
-    const center = left + sliderContainer.offsetWidth / 2;
+    const halfWidth = sliderContainer.offsetWidth / 2;
+
+    const center = left + halfWidth;
 
     const dx = event.pageX - center; 
 
-    console.log(center, event.offsetX, dx);
+    // console.log(center, halfWidth, dx);
 
-    // slider.play(10 * dx / center, 500);
+    // slider.play(Math.trunc(5 * dx / halfWidth), 1000);
+
+    // 0    - +half
+    // half    0 
+    // 1       0  
+    // 2000 - 200 
+
+    slider.play(
+      Math.sign(dx), 
+      ((halfWidth - Math.abs(dx)) / halfWidth) * 2000 + 200
+      // Math.abs(halfWidth / Math.min(100, dx))
+    );
 
 
 

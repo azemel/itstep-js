@@ -18,7 +18,10 @@ class Slider {
   _paddingRight = 0;
   _currentIndex = 0;
 
+  _playState = false;
   _playTimer = null;
+  _playDirection = 0;
+  _playSpeed = 0;
   
   // const dx = 200; // шаг, на котоырй мы смещаем элемент
   // let x = 0; // реальная позицию элемента
@@ -158,22 +161,53 @@ class Slider {
   }
 
 
+  // play(direction = 1, dt = 1000) {
+  //   this._playDirection = direction;
+
+  //   if (this._playTimer === null) {
+  //     this._playTimer = setInterval(() => {
+  //       console.log(this._playDirection)
+
+  //       this.moveSlide(this._playDirection);
+  //     }, dt);
+
+  //     this.moveSlide(this._playDirection);
+  //   }
+  // }
+
+
+
   play(direction = 1, dt = 1000) {
-    if (this._playTimer !== null) {
-      clearInterval(this._playTimer);
+    this._playDirection = direction;
+    this._playSpeed = dt;
+    // this._playState = true;
+
+    if (this._playTimer === null) {
+      const doStep = () => {
+        console.log(this._playDirection, this._playSpeed);
+        this.moveSlide(this._playDirection);
+
+        this._playTimer = setTimeout(doStep, this._playSpeed);
+      }
+
+      // this._playTimer = setTimeout(() => {
+      //   console.log(direction)
+      //   this.moveSlide(direction);
+
+      //   this._playTimer = 
+      // }, dt);
+
+      doStep();
+      // this.moveSlide(this._playDirection);
     }
-
-    this._playTimer = setInterval(() => {
-      this.moveSlide(direction);
-    }, dt);
-
-    // this.moveSlide(direction);
   }
 
   stop() {
     if (this._playTimer !== null) {
       clearInterval(this._playTimer);
     }
+    // this._playState = false;
+    this._playDirection = 0;
     this._playTimer = null;
   }
 
