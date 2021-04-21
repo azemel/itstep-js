@@ -381,5 +381,20 @@
     <td valign="top"><a href="./HW24">HW24</a></td>
     <td valign="top"><a href="./EX4">EX4</a></td>
   </tr>
+
+  <tr>
+    <td valign="top">24</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/ixfOaRfjT6tlP3RLWgQTIu502hX3GfhKJI_yJYMQpngPN9TSZI7wbXEr_6YAdhQb.auUKOf8pYB5VEVec">12.04</a>
+    </td>
+    <td valign="top"> 
+      Web 8
+      <ul>
+        <li>UI</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW25">HW25</a></td>
+    <td valign="top"><a href="./EX4">EX4</a></td>
+  </tr>
 </table>
 
