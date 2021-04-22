@@ -365,6 +365,7 @@
       </ul>
     </td>
     <td valign="top"><a href="./HW23">HW23</a></td>
+    <td valign="top"></td>
   </tr>
 
   <tr>
@@ -383,18 +384,78 @@
   </tr>
 
   <tr>
-    <td valign="top">24</td>
+    <td valign="top">25</td>
     <td valign="top">
-      <a href="https://zoom.us/rec/share/ixfOaRfjT6tlP3RLWgQTIu502hX3GfhKJI_yJYMQpngPN9TSZI7wbXEr_6YAdhQb.auUKOf8pYB5VEVec">12.04</a>
+      <a href="https://zoom.us/rec/share/0kqsrE_NgN-BGXkuwh-IDipoFIfA4GF_QsFCvofQbuB2gFAvYuzuodnZ1MjJzfhp.JASGAhP0PEDE0ahS">12.04</a>
     </td>
     <td valign="top"> 
       Web 8
       <ul>
-        <li>UI</li>
+        <li>UI: Слайдер</li>
       </ul>
     </td>
     <td valign="top"><a href="./HW25">HW25</a></td>
-    <td valign="top"><a href="./EX4">EX4</a></td>
+    <td valign="top"><a href="./EX5">EX5</a></td>
+  </tr>
+
+  <tr>
+    <td valign="top">25</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/j_KFo8kOLTK92Jen5RFHrhW3gQe7zCVAQ-SEfAtWrBFvVeuG0TmLMJGUZVcFacI6.w-HbNz-N-vpA9m8x">14.04</a>
+    </td>
+    <td valign="top"> 
+      Web 9
+      <ul>
+        <li>UI: Драг н Дроп</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW26">HW26</a></td>
+    <td valign="top"><a href="./EX6">EX6</a></td>
+  </tr>
+
+  <tr>
+    <td valign="top">26</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/0jPRHwm5Vm31_nMHji_wXqanDi9ufwWRi6JW1WDdhy1RZQLHqIhpiTLfHxemSi9x.94ZJLNX1TZ0svhoK">15.04</a>
+    </td>
+    <td valign="top"> 
+      Web 10
+      <ul>
+        <li>UI: Скролл</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW27">HW27</a></td>
+    <td valign="top"></td>
+  </tr>
+
+  <tr>
+    <td valign="top">27</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/0jPRHwm5Vm31_nMHji_wXqanDi9ufwWRi6JW1WDdhy1RZQLHqIhpiTLfHxemSi9x.94ZJLNX1TZ0svhoK">19.04</a>
+    </td>
+    <td valign="top"> 
+      Web 11
+      <ul>
+        <li>Promise</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW28">HW28</a></td>
+    <td valign="top"></td>
+  </tr>
+
+  <tr>
+    <td valign="top">28</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/sDzHPeKUu6FhScF1VTp9ews9YF5OxQTNKc48BbsXnJW81FZTERzLF1A8D-dRVGsG.G82ecVhlrymS1hVh">21.04</a>
+    </td>
+    <td valign="top"> 
+      Web 12
+      <ul>
+        <li>Canvas</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW29">HW29</a></td>
+    <td valign="top"></td>
   </tr>
 </table>
 
