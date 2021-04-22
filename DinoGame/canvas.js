@@ -32,42 +32,58 @@ const draw = (canvas) => {
    * @type {CanvasRenderingContext2D}
    */
   const context = canvas.getContext("2d"); // webgl webgl2
-
-
-  context.clearRect(0, 0, width, height);
-
-  // const barWidth = 50;
-  // const barHeight = 10;
-  // const barSpace = 25;
-
-  context.save();
-  context.translate(100, 700);
-  context.scale(50, -10);
-
-  context.save();
-  bars(context)(data);
+  
+  
   context.fillStyle = "hsl(50, 50%, 50%)";
-  context.fill();
-  context.restore();
+  const a = Math.PI / 6;
+  context.translate(600, 500);
+  context.scale(50, 50);
+  context.rotate(a);
 
-  context.save();
-  doublebars(context)(data);
-  context.fillStyle = "hsl(100, 50%, 50%)";
-  context.fill();
-  context.restore();
+  context.moveTo(0, 0);
+  context.lineTo(1, 0);
+  context.arc(0, 0, 1, 0, Math.PI / 2);
+  context.closePath();
 
-  context.restore();
+  context.lineWidth = 4 / 50;
+  context.stroke();
+
+
+
+  // context.clearRect(0, 0, width, height);
+
+  // // const barWidth = 50;
+  // // const barHeight = 10;
+  // // const barSpace = 25;
+
+  // context.save();
+  // context.translate(100, 700);
+  // context.scale(50, -10);
+
+  // context.save();
+  // bars(context)(data);
+  // context.fillStyle = "hsl(50, 50%, 50%)";
+  // context.fill();
+  // context.restore();
+
+  // context.save();
+  // doublebars(context)(data);
+  // context.fillStyle = "hsl(100, 50%, 50%)";
+  // context.fill();
+  // context.restore();
+
+  // context.restore();
   
 
-  context.save();
-  context.translate(600, 700);
-  context.scale(20, -20);
+  // context.save();
+  // context.translate(600, 700);
+  // context.scale(20, -20);
 
-  bars(context)(data);
-  context.fillStyle = "hsl(120, 50%, 50%)";
-  context.fill();
+  // bars(context)(data);
+  // context.fillStyle = "hsl(120, 50%, 50%)";
+  // context.fill();
   
-  context.restore();
+  // context.restore();
   
 
   // context.rotate(Math.PI / 4); // 45 градусов
