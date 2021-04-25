@@ -457,5 +457,20 @@
     <td valign="top"><a href="./HW29">HW29</a></td>
     <td valign="top"></td>
   </tr>
+  
+  <tr>
+    <td valign="top">29</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/OLs5UYpy5cEHPU81-nNZJfnGDGIGjIlnwGFgOxYVjqtcQfZWIeVOZPrtX4mOy9pH.JdD91T5JTPiG4bEd">22.04</a>
+    </td>
+    <td valign="top"> 
+      Web 13
+      <ul>
+        <li>Canvas</li>
+      </ul>
+    </td>
+    <td valign="top"><a href="./HW30">HW29</a></td>
+    <td valign="top"><a href="./EX7">EX7</a></td>
+  </tr>
 </table>
 
