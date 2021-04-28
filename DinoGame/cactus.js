@@ -1,9 +1,11 @@
 class Cactus {
   shape
-  // position
+  position
 
   constructor({ r, x }) {
     this.shape = circle(x, 0 + r, r);
+    this.position = vector(x, 0);
+
   }
 }
 

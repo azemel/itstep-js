@@ -6,6 +6,7 @@ const length = v => Math.sqrt(v[0] * v[0] + v[1] * v[1]);
 const add = (a, b) => [a[0] + b[0], a[1] + b[1]];
 const inverse = (a) => [-a[0], -a[1]];
 const substract = (a, b) => add(a, inverse(b));
+const scale = (a, s) => [a[0] * s, a[1] * s];
 
 
 const circle = (x, y, r) => ({

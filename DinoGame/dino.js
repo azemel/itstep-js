@@ -3,49 +3,41 @@ class Dino {
   shape;
   position;
 
-  // R = 50;
+  v;
 
-  // x = 0;
-  // y = 0;
+  // vx = 10;
+  // vy = 0;
 
-  vx = 10;
-  vy = 0;
-
-  g = 20;
-  vy0 = 100;
+  g;
+  jumpAcceleration;
+  // vy0 = 100;
 
   constructor({ r, vx, g , vy0 }) {
     this.position = [0, 0];
     this.shape = circle(0, 0 + r, r);
-    this.vx = vx;
-    this.g = g;
-    this.vy0 = vy0;
+    this.v = vector(vx, 0);
+    this.g = vector(0, -g);
+    this.jumpAcceleration = vector(0, vy0);
   }
 
   jump() {
     if (this.position[1] === 0) {
-      this.vy = this.vy0;
+      this.v = add(this.v, this.jumpAcceleration);
     }
   }
 
   step(dt) {
-    let [x, y] = this.position;
-    let r = this.shape.r;
-
-    this.vy -= this.g * dt;
-    y += (this.vy * dt);
+    this.v = add(this.v, scale(this.g, dt));
+    this.position = add(this.position, scale(this.v, dt));
 
     // Столкновение с землей
-    if (y <= 0) {
-      this.vy = 0;
-      y = 0;
+    if (this.position[1] <= 0) {
+      this.v = vector(this.v[0], 0);
+      this.position = vector(this.position[0], 0);
     }
 
-    x += this.vx * dt;
-
-    this.shape = circle(x, y + r, r);
-    this.position = [x, y];
-    console.log(this.position);
+    let r = this.shape.r;
+    this.shape = circle(this.position[0], this.position[1] + r, r);
   }
 
 }

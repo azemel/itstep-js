@@ -9,5 +9,6 @@ window.addEventListener("load", () => {
 
   document.body.append(canvas);
 
-  game(canvas);
+  const game = new Game(canvas);
+  game.start();
 });
