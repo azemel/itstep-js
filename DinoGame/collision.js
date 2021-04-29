@@ -14,4 +14,48 @@ const circle = (x, y, r) => ({
   r
 });
 
-const collide = (a, b) => a.r + b.r >= length(substract(a.o, b.o));
+// const rect = (x1, y1, x2, y2) => [
+//   vector(x1, y1), // левый нижний
+//   vector(x2, y2), // правый верхний
+// ];
+
+const rect = (o, size) => ({
+  o,
+  size,
+});
+
+
+
+const collideCircles = (a, b) => a.r + b.r >= length(substract(a.o, b.o));
+
+const collideRectangles = (a, b) => {
+
+  let xs = [
+    a.o[0] - a.size[0] / 2,
+    a.o[0] + a.size[0] / 2,
+    b.o[0] - b.size[0] / 2,
+    b.o[0] + b.size[0] / 2
+  ];
+
+  let ys = [
+    a.o[1],
+    a.o[1] + a.size[1],
+    b.o[1],
+    b.o[1] + b.size[1]
+  ];
+  // console.log(ys);
+
+  return [xs, ys].every(([al, ar, bl, br]) => {
+
+    if (al <= bl) {
+      if (ar >= bl) {
+        return true;
+      }
+    } else {
+      if(br >= al) {
+        return true;
+      }
+    }
+  });
+
+}

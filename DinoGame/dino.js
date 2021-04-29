@@ -12,12 +12,32 @@ class Dino {
   jumpAcceleration;
   // vy0 = 100;
 
-  constructor({ r, vx, g , vy0 }) {
+  sprite;
+  spriteIsReady = false;
+  spriteW;
+  spriteH;
+
+  constructor({ h, w, vx, g , vy0 }) {
     this.position = [0, 0];
-    this.shape = circle(0, 0 + r, r);
+    this.shape = rect(this.position, vector(w, h));
     this.v = vector(vx, 0);
     this.g = vector(0, -g);
     this.jumpAcceleration = vector(0, vy0);
+
+
+    this.sprite = new Image();
+    this.sprite.src = "./pngegg.png";
+    this.sprite.onload = (event) => {
+      console.log(event);
+      this.spriteIsReady = true;
+      this.spriteW = this.sprite.width;
+      this.spriteH = this.sprite.height;
+
+      const h = this.shape.size[0] * this.spriteH / this.spriteW;
+
+      this.shape = rect(this.shape.position, vector(this.shape.size[0], h));
+    }
+
   }
 
   jump() {
@@ -36,15 +56,38 @@ class Dino {
       this.position = vector(this.position[0], 0);
     }
 
-    let r = this.shape.r;
-    this.shape = circle(this.position[0], this.position[1] + r, r);
+    // let r = this.shape.r;
+    this.shape = rect(this.position, this.shape.size);
   }
 
 }
 
 
+/**
+ * @param {CanvasRenderingContext2D} context
+ */
 renderDino = (context) => (dino) => {
   context.beginPath();
-  context.arc(0, 0, dino.shape.r, 0, Math.PI * 2);
+
+  // context.drawImage()
+  // context.rect(
+  //   -dino.shape.size[0] / 2, 0, 
+  //   dino.shape.size[0], -dino.shape.size[1]
+  // );
+
+  if (dino.spriteIsReady) {
+    context.drawImage(
+      dino.sprite, 
+      110, 100,
+      dino.spriteW - 110 - 120,
+      dino.spriteH - 100 - 100,
+      -dino.shape.size[0] / 2, 
+      -dino.shape.size[1], 
+      dino.shape.size[0], 
+      dino.shape.size[1]
+  );
+  }
+
+  // context.arc(0, 0, dino.shape.r, 0, Math.PI * 2);
   context.stroke();
 }

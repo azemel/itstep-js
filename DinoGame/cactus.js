@@ -1,25 +1,31 @@
 class Cactus {
-  shape
-  position
+  shape;
+  position;
 
-  constructor({ r, x }) {
-    this.shape = circle(x, 0 + r, r);
+  constructor({ w, h, x }) {
     this.position = vector(x, 0);
-
+    this.shape = rect(this.position, vector(w, h));
   }
 }
 
-const spawnCactus = ({ rMin, rMax, dMin, dMax }) => (cactuses) => {
-  const prevX = cactuses.length > 0 ? cactuses[cactuses.length - 1].shape.o[0] : 0;
+const spawnCactus = ({ wMin, wMax, hMin, hMax, dMin, dMax }) => (cactuses) => {
+  const prevX = cactuses.length > 0 ? cactuses[cactuses.length - 1].position[0] : 0;
 
   return new Cactus({
-    r: randomInt(rMin, rMax),
+    w: randomInt(wMin, wMax),
+    h: randomInt(hMin, hMax),
     x: prevX + randomInt(dMin, dMax),
   });
 }
 
 const renderCactus = (context) => (cactus) => {
   context.beginPath();
-  context.arc(0, 0, cactus.shape.r, 0, Math.PI * 2);
+  
+  context.rect(
+    -cactus.shape.size[0] / 2, 0, 
+    cactus.shape.size[0], -cactus.shape.size[1]
+  );
+
+  // context.arc(0, 0, cactus.shape.r, 0, Math.PI * 2);
   context.stroke();
 }
