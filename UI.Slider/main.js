@@ -53,12 +53,16 @@ window.addEventListener("load", () => {
   let isSpacePressed = false;
   let delayedLeftPress = null;
   let delayedRightPress = null;
+
+  let isIndexStarted = false;
+  let indexBuffer = "";
+
   // let delayedClick = null;
 
 
   // Клавиша отпущенаp
   sliderContainer.addEventListener("keyup", (event) => {
-    console.log("keyup", event);
+    // console.log("keyup", event);
 
     switch (event.code) {
       case "ArrowLeft": {
@@ -101,18 +105,43 @@ window.addEventListener("load", () => {
         event.preventDefault();
       } break;
 
+
+      case "AltRight":
+      case "AltLeft": {
+        isIndexStarted = false;
+
+        if (indexBuffer) {
+          slider.goToSlide(Number(indexBuffer) - 1);
+        }
+
+        indexBuffer = "";
+        // event.preventDefault();
+      } break;
     }
+
+    // console.log(event.code);
+    if (event.key >= 0 && event.key <= 9) {
+      console.log(event.key);
+      indexBuffer += event.key;
+    }
+
 
   });
 
 
   sliderContainer.addEventListener("keydown", (event) => {
-    console.log("keyup", event);
+    // console.log("keyup", event);
 
     switch (event.code) {
       case "Space": {
         isSpacePressed = true;
         event.preventDefault();
+      } break;
+
+      case "AltRight":
+      case "AltLeft": {
+        isIndexStarted = true;
+        // event.preventDefault();
       } break;
     }
 
@@ -136,42 +165,42 @@ window.addEventListener("load", () => {
   //   slider.play();
   // });
 
-  sliderContainer.addEventListener("mouseleave", (event) => {
-    console.log(event);
-    slider.stop();
-  });
+  // sliderContainer.addEventListener("mouseleave", (event) => {
+  //   console.log(event);
+  //   slider.stop();
+  // });
 
   
-  sliderContainer.addEventListener("mousemove", (event) => {
-    // console.log(sliderContainer.offsetTop,sliderContainer.offsetLeft );
-    const left = sliderContainer.offsetLeft;
+  // sliderContainer.addEventListener("mousemove", (event) => {
+  //   // console.log(sliderContainer.offsetTop,sliderContainer.offsetLeft );
+  //   const left = sliderContainer.offsetLeft;
   
-    const halfWidth = sliderContainer.offsetWidth / 2;
+  //   const halfWidth = sliderContainer.offsetWidth / 2;
 
-    const center = left + halfWidth;
+  //   const center = left + halfWidth;
 
-    const dx = event.pageX - center; 
+  //   const dx = event.pageX - center; 
 
-    // console.log(center, halfWidth, dx);
+  //   // console.log(center, halfWidth, dx);
 
-    // slider.play(Math.trunc(5 * dx / halfWidth), 1000);
+  //   // slider.play(Math.trunc(5 * dx / halfWidth), 1000);
 
-    // 0    - +half
-    // half    0 
-    // 1       0  
-    // 2000 - 200 
+  //   // 0    - +half
+  //   // half    0 
+  //   // 1       0  
+  //   // 2000 - 200 
 
-    slider.play(
-      Math.sign(dx), 
-      ((halfWidth - Math.abs(dx)) / halfWidth) * 2000 + 200
-      // Math.abs(halfWidth / Math.min(100, dx))
-    );
+  //   slider.play(
+  //     Math.sign(dx), 
+  //     ((halfWidth - Math.abs(dx)) / halfWidth) * 2000 + 200
+  //     // Math.abs(halfWidth / Math.min(100, dx))
+  //   );
 
 
 
-    // console.log(event);
-    // slider.stop();
-  });
+  //   // console.log(event);
+  //   // slider.stop();
+  // });
 
   // sliderContainer.addEventListener("mousemove", console.log);
 
@@ -179,6 +208,10 @@ window.addEventListener("load", () => {
   slider.goToSlide(2);
 });
 
+
+// const images = [
+//   "images/img1.jpg"
+// ];
 
 const createSlide = (index) => {
   return $("div", { 

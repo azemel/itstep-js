@@ -16,6 +16,8 @@ body {
 
 
 .drag-n-drop {
+  width: 60%;
+  margin: 60px;
   background-color: aquamarine;
   display: flex;
   flex-direction: column;

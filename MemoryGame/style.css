@@ -110,11 +110,11 @@ html, body {
 }
 
 
-.card {
+x .card {
   position: relative;
 }
 
-.card__face {
+.theme__pink .card__face {
   position: absolute;
   top: 0;
   left: 0;

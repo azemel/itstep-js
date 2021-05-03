@@ -5,7 +5,6 @@ let placeholderIndex = 0;
 let innerX = 0;
 let innerY = 0;
 
-
 window.addEventListener("load", () => {
 
   container = $("div", {
@@ -21,6 +20,7 @@ window.addEventListener("load", () => {
 
 });
 
+
 const createItem = (index) => {
   const item = $("div", { 
       className: "drag-n-drop__item",
@@ -29,7 +29,8 @@ const createItem = (index) => {
       },
       onmousemove: dragOver,
     }
-  )
+  );
+
   const content = $("div", { 
       className: "drag-n-drop__content",
       onmousedown: startDrag(item),
@@ -51,6 +52,7 @@ const createPlacehodler = (height, width, index) => {
 
     }
   )
+
   const content = $("div", { 
       className: "drag-n-drop__placeholder-content ",
     });
@@ -59,7 +61,6 @@ const createPlacehodler = (height, width, index) => {
 
   return item;
 }
-
 
 
 const startDrag = (item) => (event) => {
@@ -73,8 +74,14 @@ const startDrag = (item) => (event) => {
   innerX = item.offsetLeft - event.pageX;
   innerY = item.offsetTop - event.pageY;
   
+
+  currentItem.style.width = width + "px";
+  currentItem.style.hepight = height + "px";
+
   currentItem.classList.add("drag-n-drop__item_dragging");
   
+
+
   container.insertBefore(currentPlaceholder, currentItem);
   
   // console.log(item, event);
@@ -97,6 +104,32 @@ const drag = (event) => {
 
   let x = event.pageX + innerX;
   let y = event.pageY + innerY;
+
+  // const { top: containerTop, left: containerLeft } = currentItem.getBoundingClientRect();
+  // const { top: itemTop, left: itemLeft } = currentItem.getBoundingClientRect();
+
+
+  // console.log(itemTop, itemLeft);
+
+  // console.log(container.offsetTop, currentItem.offsetTop);
+  if (container.offsetLeft >= currentItem.offsetLeft) {
+    
+    console.log(container.offsetLeft, currentItem.offsetLeft);
+
+    // x = containerLeft;
+  }
+
+  // console.log(container.offsetTop, currentItem.offsetTop);
+
+  if (container.offsetTop >= currentItem.offsetTop) {
+    
+    console.log(container.offsetTop, currentItem.offsetTop);
+    // console.log(container.offsetTop, currentItem.offsetTop);
+    // y = containerTop;
+  }
+
+
+  console.log(x, y);
 
   
   currentItem.style.transform = "translate(" + x + "px," + y + "px)";
@@ -133,6 +166,8 @@ const stopDrag = (event) => {
   currentItem.classList.remove("drag-n-drop__item_dragging");
   currentItem.style.transform = null;
 
+  currentItem.style.width = null;
+  currentItem.style.hepight = null;
   
   container.insertBefore(currentItem, currentPlaceholder);
   currentPlaceholder.remove();

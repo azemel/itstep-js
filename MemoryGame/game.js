@@ -22,6 +22,10 @@ const M = 2;
 const width = 150;
 const height = 200;
 
+const images = [
+  "images/1.jpg",
+
+];
 
 
 const createGame = (gameDiv, timerDiv, gameOverCallback) => {
@@ -48,7 +52,9 @@ const createGame = (gameDiv, timerDiv, gameOverCallback) => {
       },
       onclick:  handleClick, // addEventListener("click", () => ...)
     }, 
-      $("div", { className: "card__face card__front"}, value),
+      $("div", { className: "card__face card__front"}, 
+        $("img", { src: images[value] })
+      ),
       $("div", { className: "card__face card__back"}),
     );
 
