@@ -480,12 +480,32 @@
       <a href="https://zoom.us/rec/share/fPV_acIvzEPigyPZnu2H1sV-90j8N-jMm4KUfsinoq5Fhaw-vYYJ9I5cIGnEvzL6.rEpqs7ZYBTO9ZPcK">26.04</a>
     </td>
     <td valign="top"> 
-      Web 14
-      <ul>
-        <li>Canvas</li>
-      </ul>
     </td>
     <td valign="top"><a href="./HW31">HW31</a></td>
+    <td valign="top"><a href="./EX9">EX9</a></td>
+  </tr>
+  
+  
+  <tr>
+    <td valign="top">31</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/KtwxVwwU2ySGiKBAyrs5iwgWoECWShZCq7J16P3IQ_q1nIOdVuhuYx0wwVxrt94.FFYRx0-YTdo3_M7c">28.04</a>
+    </td>
+    <td valign="top"> 
+    </td>
+    <td valign="top"><a href="./HW31">HW32</a></td>
+    <td valign="top"><a href="./EX10">EX10</a></td>
+  </tr>
+  
+  <tr>
+    <td valign="top">32</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/PZbUvDnlZjiSOy3YNYYnxqSv7p34WZu8DIW1GBKGk7nIG4Cg8vU0f_R03VPYww4o.3n33vZrPxjr2vtt5">29.04</a>
+    </td>
+    <td valign="top"> 
+    </td>
+    <td valign="top"><a href="./HW31">HW33</a></td>
+    <td valign="top"></td>
     <!-- <td valign="top"><a href="./EX7">EX7</a></td> -->
   </tr>
   
