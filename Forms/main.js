@@ -1,3 +1,20 @@
+window.addEventListener("load", () => {
+  let input = document.forms['calc'].elements['expression'];
+
+  let div = document.getElementById("result");
+
+  input.addEventListener("input", () => {
+    const value = input.value;
+
+    // magic
+
+    div.innerHTML = "ответ";
+
+  });
+
+});
+
+
 window.addEventListener("load2", () => {
   const form = $("form", {
     name: "myform"

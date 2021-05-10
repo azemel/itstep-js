@@ -6,28 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="../lib/dom.js"></script>
-  <script src="regex.js"></script>
+  <script src="markdown.js"></script>
+  <style>
+    textarea {
+      display: block;
+      width: 600px;
+      height: 300px;
+    }
+  </style>
 </head>
 <body>
-  <form name="size-form">
-    <div>
-      <input type="text" name="width">
-      X 
-      <input type="text" name="height"> 
-    </div>
-    <div>
-      <label><input type="checkbox" name="isSquare"> Квадрат</label>
-    </div>
-    <div>
-      <select name="color">
-        <option value="">---</option>
-        <option value="blue">Синий</option>
-        <option value="green">Зеленый</option>
-        <option value="yellow">Желтый</option>
-      </select>
-    </div>
-    
-    <div id="bar"></div>
+  <form name="markdown">
+    <input name="source" type="file"/>
+    <!-- <button type="submit">Обработать</button> -->
+    <img id="result"/>
   </form>
 </body>
 </html>
