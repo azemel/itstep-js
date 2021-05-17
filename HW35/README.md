@@ -21,3 +21,21 @@
 
 2. Самое элегантное решение
 
+
+// input -> result
+
+
+number = \d+
+
+
+factor = power | number | bracketed
+prodcut = seq(factor, gluedBy (*/) (factor)) 
+
+
+term = pow | product | number | bracketed
+sum = seq(term, gluedBy (+-) (term)) 
+
+
+1+2+3*4+5 = [1, +, 2, +, [3, *, 4], +, 5 ]
+
+// 1+2+3*4+5 => 1+2+12+5 => 3+12+5 => 15+5 => 20
