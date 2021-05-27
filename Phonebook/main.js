@@ -7,63 +7,71 @@ window.addEventListener("load", async () => {
   // await db.clear();
   await db.seed(mockContacts);
 
-  
-  // window.addEventListener("popstate", () => {
-  //   console.log(window.location.search);
-  // });
-
-  // console.log(window.location);
-  // console.log(window.history);
-  
-  const renderResults = renderContacts(document.getElementById("contacts"));
-  const search = _search(db, renderResults)
   const input = document.forms["search"].elements["query"];
-  loadQuery(search, input);
 
-  input.addEventListener("input", e => search(input));
+  const renderContacts = _renderContacts(document.getElementById("contacts"));
+  const search = _search(db)
+  const handleInput = _handleInput(search, renderContacts);
+
+  handleLocation(handleInput, input);
+  
+  window.addEventListener("popstate", () => {
+    console.log(window.location.search);
+    handleLocation(handleInput, input);
+  });
+
+  input.addEventListener("input", async e => {
+    const query =  sanitizeQuery(input.value);
+    updateHistory(query);
+    await handleInput(query);
+  });
 
   console.log(db);
 });
 
+const sanitizeQuery = query => query.trim();
 
-const _search = (db, renderResults) => async input => {
-  let { value } = input;
+const updateHistory = query => {
+  window.document.title = "Поиск: " + query;
+  // window.location.href = "http://google.com/search?q=" + window.encodeURIComponent(query);
+  window.history.pushState(null, "Поиск: " + query, "?query=" + window.encodeURIComponent(query));
+}
 
-  value = value.trim();
+const _handleInput = (search, renderContacts) => async query  => {
+  renderContacts(await search(query));
+}
 
-  window.document.title = "Поиск: " + value;
-  window.history.pushState(null, "Поиск: " + value, "?query=" + window.encodeURIComponent(value));
+const _search = db => async query => {
 
-  if (!value) {
-    return;
+  if (!query) {
+    return [];
+  }
+
+  const randMatch = query.match(/^rand (\d+)$/i)
+  if (randMatch) {
+    return await db.listRandom(parseInt(randMatch[1]));
   }
 
   // validation
   // разобрать сложный запрос
 
   let predicate;
-  if (value.search(/^\+?\d+$/) >= 0) {
+  if (query.search(/^\+?\d+$/) >= 0) {
     predicate = contact => {
-      return contact.phone.includes(value);
+      return contact.phone.includes(query);
     };
   } else {
+    query = query.toUpperCase();
     predicate = contact => {
-      return contact.name.includes(value);
+      return contact.name.toUpperCase().includes(query);
     };
   }
 
-  const contacts = await db.findContacts(predicate);
-
-  console.log(contacts);
-  renderResults(contacts); 
+  return await db.findContacts(predicate);
 }
 
-/**
- * 
- * @param {HTMLElement} container 
- * @returns 
- */
-const renderContacts = container => contacts => {
+
+const _renderContacts = container => contacts => {
   while (container.firstChild) {
     container.firstChild.remove();
   }
@@ -75,10 +83,14 @@ const renderContact = contact => {
   return $("div", {}, [contact.name, contact.phone, contact.email].join(" "));
 }
 
-const loadQuery = (search, input) => {
-  input.value = getHrefQuery()["query"];
+const handleLocation = (handleInput, input) => {
+  const query = getHrefQuery()["query"];
 
-  search(input);
+  if (query) {
+    input.value = query;
+    handleInput(query);
+  }
+
 }
 
 

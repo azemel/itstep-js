@@ -159,5 +159,44 @@ class DbContext {
   }
 
 
+  listRandom(n) {
+    return new Promise((resolve, reject) => {
+      const transaction = this.db.transaction("contacts", "readonly");
+
+      const result = [];
+
+      transaction.addEventListener("complete", e => {
+        console.log("DbContext", "Нашли", result, e);
+        resolve(result);
+      });
+
+      transaction.addEventListener("error", e => {
+        reject(e);
+      });
+  
+      const store = transaction.objectStore("contacts");
+      
+      // Достать N случайных контактов
+      store.getAllKeys().onsuccess = e => {
+        const ids = e.target.result;
+
+        Array.from({ length: n })
+          .map(() => {
+            const index = randomInt(0, ids.length - 1);
+            const [id] = ids.splice(index, 1);
+            return id;
+          })
+          .forEach(id => {
+            store.get(id).onsuccess = e => {
+              result.push(e.target.result);
+            }
+          });
+      };
+
+
+
+    });
+  }
+
   
 }
