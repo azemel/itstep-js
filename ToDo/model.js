@@ -56,8 +56,20 @@ class ToDoList {
     this.store = store;
   }
 
-  async list() {
-    return await this.store.getList();
+  async list({ includeArchive, includeActive }) {
+    return (await this.store.getList())
+      .filter(item => {
+        return (item.isDone && includeArchive) || (!item.isDone && includeActive);
+      })
+      .sort((a, b) => {
+        if (a.isDone !== b.isDone) {
+          return a.isDone - b.isDone;
+        } else if (a.isDone) {
+          return b.doneAt - a.doneAt;
+        } else {
+          return b.createdAt - a.createdAt;
+        }
+      });
   }
 
   async toggle(toDoItem) {
@@ -67,5 +79,13 @@ class ToDoList {
 
   async delete(toDoItem) {
     await this.store.delete(toDoItem);
+  }
+  async add(title, description) {
+    await this.store.insert(ToDoItem.from(title, description, new Date()));
+  }
+  async update(toDoItem, title, description) {
+    toDoItem.title = title;
+    toDoItem.description = description;
+    await this.store.update(toDoItem);
   }
 }

@@ -56,6 +56,24 @@ class IndexedDBStore {
       }
   }
 
+  clear() {
+    return new Promise((resolve, reject) => {
+      const transaction = this.db.transaction("todo", "readwrite");
+
+      transaction.addEventListener("complete", e => {
+        console.log("DbContext", "Очистили", e);
+        resolve();
+      });
+
+      transaction.addEventListener("error", e => {
+        reject(e);
+      });
+  
+      const store = transaction.objectStore("todo");
+
+      store.clear();
+    });
+  }
   
   seed(mockToDoList) {
     return new Promise((resolve, reject) => {
@@ -70,7 +88,7 @@ class IndexedDBStore {
         reject(e);
       });
   
-      const store = transaction.objectStore("contacts");
+      const store = transaction.objectStore("todo");
 
       store.count().onsuccess = e => {
         if (e.target.result > 0) {
@@ -84,7 +102,7 @@ class IndexedDBStore {
 
     });
   }
-  
+
   //махинации над toDoItem
   insert(toDoItem) {
       return new Promise((resolve, reject) => {
