@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%
+}
+ 
+body { 
+  height: 100%;
+  overflow: hidden;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr 200px;
+  height: 100vh;
+}
+
+.layout__add-form {
+  grid-row: 1;
+  grid-column: 1 / -1;
+}
+
+.layout__list-active,
+.layout__list-archive{
+  overflow-y: scroll;
+}
+
+.layout__bin {
+  grid-row: 3;
+  grid-column: 1 / -1;
+}
+
+
+
+
+
+
+/* .drag-n-drop__content {
+  position: relative;
+  background-color: cornflowerblue;
+
+
+  cursor: grab;
+  
+  color: white;
+  font-size: 30px;
+} */
+
+.drag-n-drop__item_dragging  {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.drag-n-drop__item_dragging  .drag-n-drop__content {
+  cursor: grabbing;
+}

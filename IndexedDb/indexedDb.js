@@ -68,7 +68,7 @@ request.addEventListener("upgradeneeded", (e) => {
     case 2:
     case 3: {
       const store = db.createObjectStore("books", {
-        keyPath: "id"
+        keyPath: "id",
       });
     }
 

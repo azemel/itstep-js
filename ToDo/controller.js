@@ -40,6 +40,11 @@ class Controller {
     this.render();
   }
 
+  exitEditMode() {
+    this.editedItemId = null;
+    this.render();
+  }
+
   toggle = async item => {
     await this.model.toggle(item);
     this.render();
@@ -61,7 +66,8 @@ class Controller {
       return;
     }
     await this.model.update(toDoItem, title, description);
-    this.render();
+    this.exitEditMode();
+    // this.render();
   }
 
 }

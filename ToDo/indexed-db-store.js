@@ -1,6 +1,15 @@
+const sleep = (delay) => new Promise((resolve) => {
+  setTimeout(() => {
+    console.log("Ответ " + delay);
+    resolve()
+  }, delay);
+});
+
 class IndexedDBStore {
   static DB_NAME = "todo";
   static VERSION = 1;
+
+  delay = 800;
 
   /**
    * @type {IDBDatabase}
@@ -105,7 +114,9 @@ class IndexedDBStore {
 
   //махинации над toDoItem
   insert(toDoItem) {
-      return new Promise((resolve, reject) => {
+      return new Promise(async (resolve, reject) => {
+          await sleep(this.delay);
+
           const transaction = this.db.transaction("todo", "readwrite");
           transaction.addEventListener("complete", e => {
               console.log("IndexedDBStore", "Cохранили", e);
@@ -122,7 +133,9 @@ class IndexedDBStore {
       });
   }
   update(toDoItem) {
-      return new Promise((resolve, reject) => {
+      return new Promise(async (resolve, reject) => {
+          await sleep(this.delay);
+
           const transaction = this.db.transaction("todo", "readwrite");
           transaction.addEventListener("complete", e => {
               console.log("IndexedDBStore", "Cохранили", e);
@@ -136,45 +149,48 @@ class IndexedDBStore {
       });
   }
   delete(toDoItem) {
-      return new Promise((resolve, reject) => {
-          const transaction = this.db.transaction("todo", "readwrite");
-          transaction.addEventListener("complete", e => {
-              console.log("IndexedDBStore", "Cохранили", e);
-              resolve();
-          });
-          transaction.addEventListener("error", e => {
-              reject(e);
-          });
-          const store = transaction.objectStore("todo");
-          store.delete(toDoItem.id);
-      });
+    return new Promise(async (resolve, reject) => {
+      await sleep(this.delay);
+
+        const transaction = this.db.transaction("todo", "readwrite");
+        transaction.addEventListener("complete", e => {
+            console.log("IndexedDBStore", "Cохранили", e);
+            resolve();
+        });
+        transaction.addEventListener("error", e => {
+            reject(e);
+        });
+        const store = transaction.objectStore("todo");
+        store.delete(toDoItem.id);
+    });
   }
   getList() {
-      return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+      await sleep(this.delay);
 
-          const result = [];
+      const result = [];
 
-          const transaction = this.db.transaction("todo", "readwrite");
-          transaction.addEventListener("complete", e => {
-              console.log("IndexedDBStore", "Cохранили", e);
-              resolve(result);
-          });
-          transaction.addEventListener("error", e => {
-              reject(e);
-          });
-          const store = transaction.objectStore("todo");
-          store.openCursor().onsuccess = e => {
-              var cursor = e.target.result;
-              if (cursor) {
-              //   console.log(cursor);
-                cursor.value.id = cursor.key;
-                
-                result.push(ToDoItem.fromDb(cursor.value));
-
-                cursor.continue();
-              }
-          }
+      const transaction = this.db.transaction("todo", "readwrite");
+      transaction.addEventListener("complete", e => {
+          console.log("IndexedDBStore", "Cохранили", e);
+          resolve(result);
       });
+      transaction.addEventListener("error", e => {
+          reject(e);
+      });
+      const store = transaction.objectStore("todo");
+      store.openCursor().onsuccess = e => {
+          var cursor = e.target.result;
+          if (cursor) {
+          //   console.log(cursor);
+            cursor.value.id = cursor.key;
+            
+            result.push(ToDoItem.fromDb(cursor.value));
+
+            cursor.continue();
+          }
+      }
+    });
   }
 }
 
