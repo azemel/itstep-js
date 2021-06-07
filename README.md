@@ -640,5 +640,26 @@
     <td valign="top"><a href="./HW35">HW37</a></td>
     <td valign="top"></td>
   </tr>
+
+  <tr>
+    <td valign="top">44</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/e0L1c2UMCZHWlOJaZONwF2EGIAbqY9fWr9Q8rh_fMltTnoCOrGWIlyNhYoqLRqHn.lPo3qCR_XrplzpRD">31.05</a>
+    </td>
+    <td valign="top"> 
+    </td>
+    <td valign="top"><a href="./HW35">HW37</a></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top">45</td>
+    <td valign="top">
+      <a href="https://zoom.us/rec/share/wX1WHeVfIX2igiW-i6A7hEfr5aUsQbmkxpOcmWbfpYvhXkVqBsVtng88HMx3uJNg._NZ8yXQqGQs35vpz">02.06</a>
+    </td>
+    <td valign="top"> 
+    </td>
+    <td valign="top"><a href="./Exam">Exam</a></td>
+    <td valign="top"></td>
+  </tr>
 </table>
 
